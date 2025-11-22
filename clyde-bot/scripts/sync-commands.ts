@@ -1,6 +1,5 @@
 import { REST, Routes } from "discord.js"
 import path from "path"
-import { fileURLToPath } from "url"
 import { glob } from "glob"
 
 const clientId = process.env.DISCORD_CLIENT_ID!
@@ -10,8 +9,8 @@ export const commands: any[] = []
 
 // Load commands
 const foldersPath = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "commands"
+    process.cwd(),
+    "src/commands"
 )
 const commandFiles = await glob(`${foldersPath}/**/*.ts`)
 

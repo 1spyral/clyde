@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch --no-check src/app.ts",
-    "sync-commands": "bun run sync-commands.ts"
+    "sync-commands": "bun run scripts/sync-commands.ts"
   },
   "type": "module",
   "dependencies": {
