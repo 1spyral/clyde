@@ -1,5 +1,5 @@
-import { env } from "./env"
-import { server } from "./server"
+import { env } from "@/env"
+import { server } from "@/server"
 
 const start = async () => {
     try {

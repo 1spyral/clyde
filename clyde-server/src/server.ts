@@ -2,7 +2,7 @@ import Fastify from "fastify"
 
 const fastify = Fastify({ logger: true })
 
-fastify.get("/", async (request, reply) => {
+fastify.get("/", async (_request, reply) => {
     return reply.code(200).type("text/plain").send("Healthcheck healthy")
 })
 

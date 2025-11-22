@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@schema": ["./src/db/schema/index.ts"]
+        },
+        "types": ["bun-types"],
+
+        "strict": true,
+
+        "baseUrl": "."
+    }
+}
