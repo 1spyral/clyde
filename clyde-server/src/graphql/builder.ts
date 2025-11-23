@@ -20,4 +20,4 @@ builder.addScalarType("Date", DateResolver, {})
 builder.addScalarType("JSON", JSONResolver, {})
 
 builder.queryType({})
-// builder.mutationType({})
+builder.mutationType({})
