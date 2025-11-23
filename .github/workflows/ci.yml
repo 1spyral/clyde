@@ -42,11 +42,32 @@ jobs:
             exit 1
           fi
 
+  graphql-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Generate GraphQL schema
+        run: bun run --cwd clyde-server generate-schema
+      - name: Check GraphQL schema up to date
+        run: |
+          if git diff --exit-code clyde-server/schema.graphql > /dev/null 2>&1; then
+            echo "GraphQL schema is up to date ✔"
+          else
+            echo "::error::❌ GraphQL schema is out of date. Please run 'bun run --cwd clyde-server generate-schema'."
+            exit 1
+          fi
+
   # ---------- Preflight Barrier ----------
 
   # TODO: add changed workspace detection
   preflight:
-    needs: [lockfile, prettier]
+    needs: [lockfile, prettier, graphql-schema]
     runs-on: ubuntu-latest
     steps:
       - name: Preflight checks passed

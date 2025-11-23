@@ -9,17 +9,15 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 type Message {
-    channelId: String
-    content: String
-    createdAt: Date
-    guildId: String
-    id: ID
-    updatedAt: Date
-    userId: String
+  channelId: String
+  content: String
+  createdAt: Date
+  guildId: String
+  id: ID
+  updatedAt: Date
+  userId: String
 }
 
-type Mutation
-
 type Query {
-    message(id: ID!): Message
+  message(id: ID!): Message
 }
