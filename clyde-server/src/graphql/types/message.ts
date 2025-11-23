@@ -10,7 +10,14 @@ MessageRef.implement({
         channelId: t.exposeID("channelId"),
         userId: t.exposeID("userId"),
         content: t.exposeString("content"),
-        createdAt: t.expose("createdAt", { type: "Date" }),
-        updatedAt: t.expose("updatedAt", { type: "Date" }),
+        createdAt: t.expose("createdAt", { type: "DateTime" }),
+        updatedAt: t.expose("updatedAt", { type: "DateTime" }),
+        deletedAt: t.expose("deletedAt", { type: "DateTime", nullable: true }),
+        discordCreatedAt: t.expose("discordCreatedAt", { type: "DateTime" }),
+        discordUpdatedAt: t.expose("discordUpdatedAt", { type: "DateTime" }),
+        discordDeletedAt: t.expose("discordDeletedAt", {
+            type: "DateTime",
+            nullable: true,
+        }),
     }),
 })

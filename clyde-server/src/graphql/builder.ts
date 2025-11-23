@@ -1,5 +1,5 @@
 import SchemaBuilder from "@pothos/core"
-import { DateResolver, JSONResolver } from "graphql-scalars"
+import { DateTimeResolver, JSONResolver } from "graphql-scalars"
 import { Context } from "."
 
 export const builder = new SchemaBuilder<{
@@ -9,14 +9,14 @@ export const builder = new SchemaBuilder<{
             Input: unknown
             Output: unknown
         }
-        Date: {
+        DateTime: {
             Input: Date
             Output: Date
         }
     }
 }>({})
 
-builder.addScalarType("Date", DateResolver, {})
+builder.addScalarType("DateTime", DateTimeResolver, {})
 builder.addScalarType("JSON", JSONResolver, {})
 
 builder.queryType({})

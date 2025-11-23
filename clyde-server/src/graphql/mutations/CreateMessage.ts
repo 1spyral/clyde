@@ -11,6 +11,9 @@ builder.mutationField("createMessage", t =>
             channelId: t.arg.id({ required: true }),
             userId: t.arg.id({ required: true }),
             content: t.arg.string({ required: true }),
+            discordCreatedAt: t.arg({ type: "DateTime", required: true }),
+            discordUpdatedAt: t.arg({ type: "DateTime", required: true }),
+            discordDeletedAt: t.arg({ type: "DateTime" }),
         },
         resolve: async (_parent, args, ctx) => {
             return await ctx.db

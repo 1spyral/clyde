@@ -1,6 +1,6 @@
 import { pgTable } from "drizzle-orm/pg-core"
 import * as t from "drizzle-orm/pg-core"
-import { timestamps } from "@/db/columns.helpers"
+import { discordTimestamps, timestamps } from "@/db/columns.helpers"
 import {
     createInsertSchema,
     createSelectSchema,
@@ -14,6 +14,7 @@ export const messages = pgTable("messages", {
     userId: t.text().notNull(),
     content: t.text().notNull(),
     ...timestamps,
+    ...discordTimestamps,
 })
 
 export const messageSelectSchema = createSelectSchema(messages)
