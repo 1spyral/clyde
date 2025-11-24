@@ -1,38 +1,21 @@
 import { REST, Routes } from "discord.js"
-import path from "path"
-import { glob } from "glob"
+import { commands } from "@/commands"
 
 const clientId = process.env.DISCORD_CLIENT_ID!
 const token = process.env.DISCORD_TOKEN!
 
-export const commands: any[] = []
-
-// Load commands
-const foldersPath = path.join(process.cwd(), "src/commands")
-const commandFiles = await glob(`${foldersPath}/**/*.ts`)
-
-for (const file of commandFiles) {
-    const command = await import(file)
-    if ("data" in command) {
-        commands.push(command.data.toJSON())
-    } else {
-        console.log(
-            `[WARNING] The command at ${file} is missing required "data" property.`
-        )
-    }
-}
-
-// Upload commands
 const rest = new REST().setToken(token)
 
 ;(async () => {
     try {
         console.log(
-            `Started refreshing ${commands.length} application (/) commands.`
+            `Started refreshing ${commands.size} application (/) commands.`
         )
 
         const data = (await rest.put(Routes.applicationCommands(clientId), {
-            body: commands,
+            body: Array.from(commands.values()).map(command =>
+                command.data.toJSON()
+            ),
         })) as any[]
 
         console.log(
