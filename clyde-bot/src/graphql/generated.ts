@@ -32,6 +32,13 @@ export type CreateMessageInput = {
   userId: Scalars['ID']['input'];
 };
 
+export type GenerateChatResponseInput = {
+  channelId: Scalars['ID']['input'];
+  content: Scalars['String']['input'];
+  guildId: Scalars['ID']['input'];
+  userId: Scalars['ID']['input'];
+};
+
 export type Message = {
   __typename?: 'Message';
   channelId: Scalars['ID']['output'];
@@ -50,11 +57,17 @@ export type Message = {
 export type Mutation = {
   __typename?: 'Mutation';
   createMessage: Message;
+  generateChatResponse: Scalars['String']['output'];
 };
 
 
 export type MutationCreateMessageArgs = {
   input: CreateMessageInput;
+};
+
+
+export type MutationGenerateChatResponseArgs = {
+  input: GenerateChatResponseInput;
 };
 
 export type Query = {

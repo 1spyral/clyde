@@ -6,4 +6,5 @@ export interface Context {
     request: FastifyRequest
     reply: FastifyReply
     db: BunSQLDatabase<typeof schema>
+    agents: typeof import("@/ai/agents")
 }
