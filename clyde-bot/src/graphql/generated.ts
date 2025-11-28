@@ -93,6 +93,16 @@ export type CreateMessageMutationVariables = Exact<{
 
 export type CreateMessageMutation = { __typename?: 'Mutation', createMessage: { __typename?: 'Message', id: string } };
 
+export type GenerateChatResponseMutationVariables = Exact<{
+  channelId: Scalars['ID']['input'];
+  content: Scalars['String']['input'];
+  guildId: Scalars['ID']['input'];
+  userId: Scalars['ID']['input'];
+}>;
+
+
+export type GenerateChatResponseMutation = { __typename?: 'Mutation', generateChatResponse: string };
+
 
 export const CreateMessageDocument = gql`
     mutation createMessage($channelId: ID!, $content: String!, $discordCreatedAt: DateTime!, $discordDeletedAt: DateTime, $guildId: ID!, $id: ID!, $userId: ID!) {
@@ -101,6 +111,13 @@ export const CreateMessageDocument = gql`
   ) {
     id
   }
+}
+    `;
+export const GenerateChatResponseDocument = gql`
+    mutation generateChatResponse($channelId: ID!, $content: String!, $guildId: ID!, $userId: ID!) {
+  generateChatResponse(
+    input: {channelId: $channelId, content: $content, guildId: $guildId, userId: $userId}
+  )
 }
     `;
 
@@ -113,6 +130,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     createMessage(variables: CreateMessageMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<CreateMessageMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateMessageMutation>({ document: CreateMessageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'createMessage', 'mutation', variables);
+    },
+    generateChatResponse(variables: GenerateChatResponseMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GenerateChatResponseMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GenerateChatResponseMutation>({ document: GenerateChatResponseDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'generateChatResponse', 'mutation', variables);
     }
   };
 }
