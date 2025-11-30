@@ -1,8 +1,9 @@
 import { Events } from "discord.js"
 import { client } from "@/app"
 import { commands } from "@/commands"
+import { logger } from "@/logger"
 
 client.once(Events.ClientReady, c => {
-    console.log(`Logged in as ${c.user?.tag}`)
-    console.log(`${commands.size} commands loaded.`)
+    logger.info(`Logged in as ${c.user?.tag}`)
+    logger.info(`${commands.size} commands loaded.`)
 })
