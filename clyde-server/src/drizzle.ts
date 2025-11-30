@@ -9,6 +9,7 @@ const client = new SQL({
     max: env.DB_MAX_CONNECTIONS,
     idleTimeout: env.DB_IDLE_TIMEOUT,
     connectTimeout: env.DB_CONNECT_TIMEOUT,
+    prepare: false,
 })
 
 export const db = drizzle({ client, casing: "snake_case", schema })

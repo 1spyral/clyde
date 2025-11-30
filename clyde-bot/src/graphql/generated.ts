@@ -36,6 +36,7 @@ export type GenerateChatResponseInput = {
   channelId: Scalars['ID']['input'];
   content: Scalars['String']['input'];
   guildId: Scalars['ID']['input'];
+  id: Scalars['ID']['input'];
   userId: Scalars['ID']['input'];
 };
 
@@ -94,10 +95,11 @@ export type CreateMessageMutationVariables = Exact<{
 export type CreateMessageMutation = { __typename?: 'Mutation', createMessage: { __typename?: 'Message', id: string } };
 
 export type GenerateChatResponseMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
   channelId: Scalars['ID']['input'];
-  content: Scalars['String']['input'];
   guildId: Scalars['ID']['input'];
   userId: Scalars['ID']['input'];
+  content: Scalars['String']['input'];
 }>;
 
 
@@ -114,9 +116,9 @@ export const CreateMessageDocument = gql`
 }
     `;
 export const GenerateChatResponseDocument = gql`
-    mutation generateChatResponse($channelId: ID!, $content: String!, $guildId: ID!, $userId: ID!) {
+    mutation generateChatResponse($id: ID!, $channelId: ID!, $guildId: ID!, $userId: ID!, $content: String!) {
   generateChatResponse(
-    input: {channelId: $channelId, content: $content, guildId: $guildId, userId: $userId}
+    input: {id: $id, channelId: $channelId, guildId: $guildId, userId: $userId, content: $content}
   )
 }
     `;

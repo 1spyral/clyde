@@ -29,6 +29,7 @@ client.on(Events.MessageCreate, async message => {
             await message.channel.sendTyping()
 
             const response = await api.generateChatResponse({
+                id: message.id,
                 userId: message.author.id,
                 channelId: message.channelId,
                 guildId: message.guildId!, // TODO: handle DMs

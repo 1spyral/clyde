@@ -2,17 +2,19 @@ import gql from "graphql-tag"
 
 export const GenerateChatResponseMutation = gql`
     mutation generateChatResponse(
+        $id: ID!
         $channelId: ID!
-        $content: String!
         $guildId: ID!
         $userId: ID!
+        $content: String!
     ) {
         generateChatResponse(
             input: {
+                id: $id
                 channelId: $channelId
-                content: $content
                 guildId: $guildId
                 userId: $userId
+                content: $content
             }
         )
     }

@@ -18,6 +18,7 @@ input GenerateChatResponseInput {
   channelId: ID!
   content: String!
   guildId: ID!
+  id: ID!
   userId: ID!
 }
 

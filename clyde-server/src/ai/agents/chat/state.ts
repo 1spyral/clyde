@@ -1,10 +1,13 @@
 import { z } from "zod"
 
-const DiscordMessageSchema = z.object({})
+const ChatMessageSchema = z.object({
+    content: z.string().nullable(),
+    user: z.string().optional(),
+})
 
 export const ChatState = z.object({
-    history: z.array(z.string()),
-    message: z.string(),
+    history: z.array(ChatMessageSchema),
+    message: ChatMessageSchema,
 
     response: z.string().optional(),
 })
