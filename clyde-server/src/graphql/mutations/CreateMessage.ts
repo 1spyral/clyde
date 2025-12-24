@@ -16,7 +16,11 @@ builder.mutationField("createMessage", t =>
             discordDeletedAt: t.arg({ type: "DateTime" }),
         },
         resolve: async (_parent, args, ctx) => {
-            return await ctx.db.insert(messages).values(args).returning().then(r => r[0])
+            return await ctx.db
+                .insert(messages)
+                .values(args)
+                .returning()
+                .then(r => r[0])
         },
     })
 )
