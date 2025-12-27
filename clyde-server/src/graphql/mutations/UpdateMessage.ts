@@ -13,8 +13,12 @@ builder.mutationField("updateMessage", t =>
             discordDeletedAt: t.arg({ type: "DateTime" }),
         },
         resolve: async (_parent, args, ctx) => {
-            return await ctx.db.update(messages).set(args).where(eq(messages.id, args.id)).returning().then(r => r[0])
+            return await ctx.db
+                .update(messages)
+                .set(args)
+                .where(eq(messages.id, args.id))
+                .returning()
+                .then(r => r[0])
         },
-    }
-    )
+    })
 )
