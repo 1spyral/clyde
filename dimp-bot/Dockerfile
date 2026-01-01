@@ -4,15 +4,14 @@ WORKDIR /app
 
 COPY package.json bun.lock ./
 COPY dimp-auth/package.json dimp-auth/
-COPY clyde-bot/package.json clyde-bot/
+COPY dimp-bot/package.json dimp-bot/
 COPY clyde-dashboard/package.json clyde-dashboard/
 COPY clyde-server/package.json clyde-server/
 
-RUN bun install --frozen-lockfile --production --filter clyde-bot
+RUN bun install --frozen-lockfile --production --filter dimp-bot
+COPY dimp-bot dimp-bot
 
-COPY clyde-bot clyde-bot
-
-WORKDIR /app/clyde-bot
+WORKDIR /app/dimp-bot
 ENV NODE_ENV=production
 
 CMD ["bun", "run", "start"]

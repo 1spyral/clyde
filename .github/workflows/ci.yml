@@ -12,7 +12,7 @@ env:
     ~/.bun/install/cache
     node_modules
     dimp-auth/node_modules
-    clyde-bot/node_modules
+    dimp-bot/node_modules
     clyde-dashboard/node_modules
     clyde-server/node_modules
 
@@ -126,13 +126,13 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Run GraphQL codegen
-        run: bun run --cwd clyde-bot codegen
+        run: bun run --cwd dimp-bot codegen
       - name: Check GraphQL codegen up to date
         run: |
-          if git diff --exit-code clyde-bot/src/graphql/generated.ts > /dev/null 2>&1; then
+          if git diff --exit-code dimp-bot/src/graphql/generated.ts > /dev/null 2>&1; then
             echo "GraphQL codegen is up to date ✔"
           else
-            echo "::error::❌ GraphQL codegen is out of date. Please run 'bun run --cwd clyde-bot codegen'."
+            echo "::error::❌ GraphQL codegen is out of date. Please run 'bun run --cwd dimp-bot codegen'."
             exit 1
           fi
 
@@ -187,7 +187,7 @@ jobs:
 
       - name: Run bot linter
         run: |
-          if bun run --cwd clyde-bot lint; then
+          if bun run --cwd dimp-bot lint; then
             echo "Bot linting passed ✔"
           else
             echo "::error::❌ Bot linting failed. Please fix the linting errors."

@@ -1,5 +1,5 @@
 {
-  "name": "clyde-bot",
+  "name": "dimp-bot",
   "private": true,
   "scripts": {
     "dev": "bun run --watch --no-check src/app.ts",

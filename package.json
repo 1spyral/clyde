@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "docker:build:auth": "docker build -f dimp-auth/Dockerfile -t dimp-auth .",
-    "docker:build:bot": "docker build -f clyde-bot/Dockerfile -t clyde-bot .",
+    "docker:build:bot": "docker build -f dimp-bot/Dockerfile -t dimp-bot .",
     "docker:build:dashboard": "docker build -f clyde-dashboard/Dockerfile -t clyde-dashboard .",
     "docker:build:server": "docker build -f clyde-server/Dockerfile --target server -t clyde-server .",
     "docker:build:server:migrate": "docker build -f clyde-server/Dockerfile --target migrate -t clyde-server-migrate .",
@@ -12,7 +12,7 @@
   },
   "workspaces": [
     "dimp-auth",
-    "clyde-bot",
+    "dimp-bot",
     "clyde-dashboard",
     "clyde-server"
   ],
