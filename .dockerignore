@@ -1,0 +1,71 @@
+# ------------------------------
+# Dependencies & package caches
+# ------------------------------
+**/node_modules
+**/.bun
+**/.cache
+**/.npm
+**/.pnpm-store
+
+# ------------------------------
+# Build artifacts
+# ------------------------------
+**/dist
+**/build
+**/.output
+**/.next
+**/.turbo
+**/.svelte-kit
+**/.astro
+**/coverage
+
+# ------------------------------
+# Test & tooling noise
+# ------------------------------
+**/.vitest
+**/.jest
+**/.eslintcache
+**/.prettiercache
+
+# ------------------------------
+# VCS / editor / OS
+# ------------------------------
+.git
+.git/**
+.github
+.github/**
+**/.DS_Store
+**/.idea
+**/.vscode
+
+# ------------------------------
+# Local env & secrets (allow templates)
+# ------------------------------
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
+
+# ------------------------------
+# Logs & temp files
+# ------------------------------
+**/*.log
+**/*.tmp
+**/*.swp
+
+# ------------------------------
+# Docker metadata (avoid recursive contexts)
+# ------------------------------
+**/Dockerfile
+**/.dockerignore
+
+# ------------------------------
+# Monorepo-specific exclusions
+# ------------------------------
+# Ignore generated GraphQL, drizzle, prisma outputs if applicable
+**/drizzle
+**/.prisma
+
+# Ignore runtime data
+**/data
+**/uploads
