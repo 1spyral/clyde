@@ -7,8 +7,8 @@
         "prettier": "^3.7.4",
       },
     },
-    "clyde-auth": {
-      "name": "clyde-auth",
+    "dimp-auth": {
+      "name": "dimp-auth",
       "dependencies": {
         "fastify": "^5.6.2",
         "pino": "^10.1.0",
@@ -29,8 +29,8 @@
         "typescript-eslint": "^8.51.0",
       },
     },
-    "clyde-bot": {
-      "name": "clyde-bot",
+    "dimp-bot": {
+      "name": "dimp-bot",
       "dependencies": {
         "@langchain/openai": "^1.2.0",
         "discord.js": "^14.25.1",
@@ -60,8 +60,8 @@
         "typescript-eslint": "^8.51.0",
       },
     },
-    "clyde-dashboard": {
-      "name": "clyde-dashboard",
+    "dimp-dashboard": {
+      "name": "dimp-dashboard",
       "dependencies": {
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
@@ -82,8 +82,8 @@
         "vite": "^7.2.4",
       },
     },
-    "clyde-server": {
-      "name": "clyde-server",
+    "dimp-server": {
+      "name": "dimp-server",
       "dependencies": {
         "@langchain/core": "^1.1.8",
         "@langchain/langgraph": "^1.0.7",
@@ -814,14 +814,6 @@
 
     "cliui": ["cliui@8.0.1", "", { "dependencies": { "string-width": "^4.2.0", "strip-ansi": "^6.0.1", "wrap-ansi": "^7.0.0" } }, "sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ=="],
 
-    "clyde-auth": ["clyde-auth@workspace:clyde-auth"],
-
-    "clyde-bot": ["clyde-bot@workspace:clyde-bot"],
-
-    "clyde-dashboard": ["clyde-dashboard@workspace:clyde-dashboard"],
-
-    "clyde-server": ["clyde-server@workspace:clyde-server"],
-
     "color-convert": ["color-convert@2.0.1", "", { "dependencies": { "color-name": "~1.1.4" } }, "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="],
 
     "color-name": ["color-name@1.1.4", "", {}, "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="],
@@ -883,6 +875,14 @@
     "dequal": ["dequal@2.0.3", "", {}, "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA=="],
 
     "detect-indent": ["detect-indent@6.1.0", "", {}, "sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA=="],
+
+    "dimp-auth": ["dimp-auth@workspace:dimp-auth"],
+
+    "dimp-bot": ["dimp-bot@workspace:dimp-bot"],
+
+    "dimp-dashboard": ["dimp-dashboard@workspace:dimp-dashboard"],
+
+    "dimp-server": ["dimp-server@workspace:dimp-server"],
 
     "dir-glob": ["dir-glob@3.0.1", "", { "dependencies": { "path-type": "^4.0.0" } }, "sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA=="],
 

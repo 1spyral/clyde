@@ -1,7 +1,7 @@
 import type { CodegenConfig } from "@graphql-codegen/cli"
 
 const config: CodegenConfig = {
-    schema: "../clyde-server/schema.graphql",
+    schema: "../dimp-server/schema.graphql",
 
     documents: "src/**/*.ts",
 

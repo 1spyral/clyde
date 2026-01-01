@@ -1,4 +1,4 @@
-name: Build & Publish clyde-server Docker Images
+name: Build & Publish dimp-server Docker Images
 
 on:
   push:
@@ -10,26 +10,26 @@ permissions:
   packages: write
 
 concurrency:
-  group: clyde-server-image-${{ github.ref }}
+  group: dimp-server-image-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  clyde-server:
+  dimp-server:
     uses: ./.github/workflows/_build-publish.yml
     with:
-      image: ghcr.io/${{ github.repository_owner }}/clyde-server
+      image: ghcr.io/${{ github.repository_owner }}/dimp-server
       context: .
-      dockerfile: clyde-server/Dockerfile
+      dockerfile: dimp-server/Dockerfile
       target: server
-      scope: clyde-server
+      scope: dimp-server
       push_latest_on_main: true
 
-  clyde-server-migrate:
+  dimp-server-migrate:
     uses: ./.github/workflows/_build-publish.yml
     with:
-      image: ghcr.io/${{ github.repository_owner }}/clyde-server-migrate
+      image: ghcr.io/${{ github.repository_owner }}/dimp-server-migrate
       context: .
-      dockerfile: clyde-server/Dockerfile
+      dockerfile: dimp-server/Dockerfile
       target: migrate
-      scope: clyde-server-migrate
+      scope: dimp-server-migrate
       push_latest_on_main: false

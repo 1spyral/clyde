@@ -9,9 +9,9 @@ updates:
 
   - package-ecosystem: "docker"
     directories:
-      - "clyde-auth"
-      - "/clyde-bot"
-      - "/clyde-dashboard"
-      - "/clyde-server"
+      - "/dimp-auth"
+      - "/dimp-bot"
+      - "/dimp-dashboard"
+      - "/dimp-server"
     schedule:
       interval: "weekly"
