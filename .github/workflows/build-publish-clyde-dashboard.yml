@@ -1,0 +1,24 @@
+name: Build & Publish clyde-dashboard Docker Image
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["**"]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: clyde-dashboard-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clyde-dashboard:
+    uses: ./.github/workflows/_build-publish.yml
+    with:
+      image: ghcr.io/${{ github.repository_owner }}/clyde-dashboard
+      context: .
+      dockerfile: clyde-dashboard/Dockerfile
+      scope: clyde-dashboard
+      push_latest_on_main: true

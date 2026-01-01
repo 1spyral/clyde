@@ -1,0 +1,24 @@
+name: Build & Publish clyde-server Docker Image
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["**"]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: clyde-server-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clyde-server:
+    uses: ./.github/workflows/_build-publish.yml
+    with:
+      image: ghcr.io/${{ github.repository_owner }}/clyde-server
+      context: .
+      dockerfile: clyde-server/Dockerfile
+      scope: clyde-server
+      push_latest_on_main: true
