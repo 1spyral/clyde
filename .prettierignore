@@ -3,5 +3,5 @@ bun.lock
 
 dimp-bot/src/graphql/generated.ts
 
-clyde-server/schema.graphql
-clyde-server/drizzle/meta
+dimp-server/schema.graphql
+dimp-server/drizzle/meta

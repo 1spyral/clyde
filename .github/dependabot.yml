@@ -12,6 +12,6 @@ updates:
       - "/dimp-auth"
       - "/dimp-bot"
       - "/dimp-dashboard"
-      - "/clyde-server"
+      - "/dimp-server"
     schedule:
       interval: "weekly"

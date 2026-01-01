@@ -14,7 +14,7 @@ env:
     dimp-auth/node_modules
     dimp-bot/node_modules
     dimp-dashboard/node_modules
-    clyde-server/node_modules
+    dimp-server/node_modules
 
 jobs:
   # ---------- Preflight Checks ----------
@@ -95,13 +95,13 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Generate GraphQL schema
-        run: bun run --cwd clyde-server generate-schema
+        run: bun run --cwd dimp-server generate-schema
       - name: Check GraphQL schema up to date
         run: |
-          if git diff --exit-code clyde-server/schema.graphql > /dev/null 2>&1; then
+          if git diff --exit-code dimp-server/schema.graphql > /dev/null 2>&1; then
             echo "GraphQL schema is up to date ✔"
           else
-            echo "::error::❌ GraphQL schema is out of date. Please run 'bun run --cwd clyde-server generate-schema'."
+            echo "::error::❌ GraphQL schema is out of date. Please run 'bun run --cwd dimp-server generate-schema'."
             exit 1
           fi
 
@@ -245,7 +245,7 @@ jobs:
 
       - name: Run server linter
         run: |
-          if bun run --cwd clyde-server lint; then
+          if bun run --cwd dimp-server lint; then
             echo "Server linting passed ✔"
           else
             echo "::error::❌ Server linting failed. Please fix the linting errors."

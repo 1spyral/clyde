@@ -1,5 +1,5 @@
 {
-  "name": "clyde-server",
+  "name": "dimp-server",
   "private": true,
   "type": "module",
   "scripts": {

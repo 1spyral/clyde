@@ -5,8 +5,8 @@
     "docker:build:auth": "docker build -f dimp-auth/Dockerfile -t dimp-auth .",
     "docker:build:bot": "docker build -f dimp-bot/Dockerfile -t dimp-bot .",
     "docker:build:dashboard": "docker build -f dimp-dashboard/Dockerfile -t dimp-dashboard .",
-    "docker:build:server": "docker build -f clyde-server/Dockerfile --target server -t clyde-server .",
-    "docker:build:server:migrate": "docker build -f clyde-server/Dockerfile --target migrate -t clyde-server-migrate .",
+    "docker:build:server": "docker build -f dimp-server/Dockerfile --target server -t dimp-server .",
+    "docker:build:server:migrate": "docker build -f dimp-server/Dockerfile --target migrate -t dimp-server-migrate .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -14,7 +14,7 @@
     "dimp-auth",
     "dimp-bot",
     "dimp-dashboard",
-    "clyde-server"
+    "dimp-server"
   ],
   "devDependencies": {
     "prettier": "^3.7.4"

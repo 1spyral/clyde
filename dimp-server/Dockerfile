@@ -6,25 +6,24 @@ COPY package.json bun.lock ./
 COPY dimp-auth/package.json dimp-auth/
 COPY dimp-bot/package.json dimp-bot/
 COPY dimp-dashboard/package.json dimp-dashboard/
-COPY clyde-server/package.json clyde-server/
+COPY dimp-server/package.json dimp-server/
 
 FROM base AS server
 
-RUN bun install --frozen-lockfile --production --filter clyde-server
-
-WORKDIR /app/clyde-server
+RUN bun install --frozen-lockfile --production --filter dimp-server
+WORKDIR /app/dimp-server
 ENV NODE_ENV=production
 
-COPY clyde-server/ ./
+COPY dimp-server/ ./
 
 CMD ["bun", "run", "start"]
 
 FROM base AS migrate
 
-RUN bun install --frozen-lockfile --filter clyde-server
+RUN bun install --frozen-lockfile --filter dimp-server
 
-WORKDIR /app/clyde-server
+WORKDIR /app/dimp-server
 
-COPY clyde-server/ ./
+COPY dimp-server/ ./
 
 CMD ["bun", "run", "db:migrate"]
