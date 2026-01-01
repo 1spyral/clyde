@@ -1,0 +1,24 @@
+name: Build & Publish clyde-auth Docker Image
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["**"]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: clyde-auth-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clyde-auth:
+    uses: ./.github/workflows/_build-publish.yml
+    with:
+      image: ghcr.io/${{ github.repository_owner }}/clyde-auth
+      context: .
+      dockerfile: clyde-auth/Dockerfile
+      scope: clyde-auth
+      push_latest_on_main: true
