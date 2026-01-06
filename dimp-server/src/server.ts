@@ -11,7 +11,13 @@ const fastify = Fastify({ logger: loggerConfig })
 fastify.register(mercurius, {
     schema,
     graphiql: env.NODE_ENV === "development",
-    context: (request, reply) => ({ request, reply, db, agents }),
+    context: (request, reply) => ({
+        request,
+        reply,
+        db,
+        agents,
+        logger: request.log,
+    }),
 })
 
 fastify.get("/", async (_request, reply) => {

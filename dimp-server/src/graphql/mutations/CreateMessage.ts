@@ -1,5 +1,6 @@
 import { messages } from "@/db/schema"
 import { builder, MessageRef } from "@graphql"
+import { GraphQLError } from "graphql"
 
 const CreateMessageInput = builder.inputType("CreateMessageInput", {
     fields: t => ({
@@ -20,11 +21,23 @@ builder.mutationField("createMessage", t =>
         nullable: false,
         args: { input: t.arg({ type: CreateMessageInput, required: true }) },
         resolve: async (_parent, args, ctx) => {
-            return await ctx.db
-                .insert(messages)
-                .values(args.input)
-                .returning()
-                .then(r => r[0])
+            try {
+                const [row] = await ctx.db
+                    .insert(messages)
+                    .values(args.input)
+                    .returning()
+                return row
+            } catch (e: unknown) {
+                ctx.logger.error(
+                    {
+                        error: e,
+                        input: args.input,
+                    },
+                    "createMessage failed"
+                )
+
+                throw new GraphQLError("Failed to create message")
+            }
         },
     })
 )
