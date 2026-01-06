@@ -25,6 +25,7 @@ builder.mutationField("createMessage", t =>
                 const [row] = await ctx.db
                     .insert(messages)
                     .values(args.input)
+                    .onConflictDoNothing()
                     .returning()
                 return row
             } catch (e: unknown) {
