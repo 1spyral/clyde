@@ -1,15 +1,13 @@
-import { drizzle } from "drizzle-orm/bun-sql"
-import { SQL } from "bun"
+import postgres from "postgres"
+import { drizzle } from "drizzle-orm/postgres-js"
 import { env } from "@/env"
 import * as schema from "@schema"
 
-const client = new SQL({
-    adapter: "postgres",
-    url: env.DB_URL,
+const client = postgres(env.DATABASE_URL, {
     max: env.DB_MAX_CONNECTIONS,
-    idleTimeout: env.DB_IDLE_TIMEOUT,
-    connectTimeout: env.DB_CONNECT_TIMEOUT,
+    idle_timeout: env.DB_IDLE_TIMEOUT,
+    connect_timeout: env.DB_CONNECT_TIMEOUT,
     prepare: false,
 })
 
-export const db = drizzle({ client, casing: "snake_case", schema })
+export const db = drizzle(client, { schema, casing: "snake_case" })
