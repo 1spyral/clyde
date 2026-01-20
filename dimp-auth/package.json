@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "fastify": "^5.7.1",
-    "pino": "^10.2.0",
+    "pino": "^10.2.1",
     "zod": "^4.3.5"
   },
   "devDependencies": {
