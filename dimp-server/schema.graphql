@@ -44,8 +44,16 @@ type Message {
 type Mutation {
   createMessage(input: CreateMessageInput!): Message!
   generateChatResponse(input: GenerateChatResponseInput!): String!
+  updateMessage(input: UpdateMessageInput!): Message
 }
 
 type Query {
   message(id: ID!): Message
+}
+
+input UpdateMessageInput {
+  content: String!
+  discordDeletedAt: DateTime
+  discordUpdatedAt: DateTime!
+  id: ID!
 }
