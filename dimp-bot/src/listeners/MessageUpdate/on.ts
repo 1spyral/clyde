@@ -6,7 +6,7 @@ import { logger } from "@/logger"
 // Write message to backend
 client.on(Events.MessageUpdate, async (_oldMessage, newMessage) => {
     // Ignore system messages
-    if (!newMessage.partial && newMessage.system) return
+    if (newMessage.system) return
 
     try {
         await api.updateMessage({
