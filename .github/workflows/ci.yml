@@ -189,9 +189,25 @@ jobs:
             exit 1
           fi
 
-  auth-lint:
+  lint:
     needs: lockfile
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: auth
+            title: Auth
+            path: dimp-auth
+          - name: bot
+            title: Bot
+            path: dimp-bot
+          - name: dashboard
+            title: Dashboard
+            path: dimp-dashboard
+          - name: server
+            title: Server
+            path: dimp-server
     steps:
       - uses: actions/checkout@v5
         with:
@@ -211,105 +227,12 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Run auth linter
+      - name: Run ${{ matrix.name }} linter
         run: |
-          if bun run --cwd dimp-auth lint; then
-            echo "Auth linting passed ✔"
+          if bun run --cwd ${{ matrix.path }} lint; then
+            echo "${{ matrix.title }} linting passed ✔"
           else
-            echo "::error::❌ Auth linting failed. Please fix the linting errors."
-            exit 1
-          fi
-
-  bot-lint:
-    needs: lockfile
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 1
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.6
-
-      - name: Cache bun modules
-        uses: actions/cache@v4
-        with:
-          path: *bun-cache-paths
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Run bot linter
-        run: |
-          if bun run --cwd dimp-bot lint; then
-            echo "Bot linting passed ✔"
-          else
-            echo "::error::❌ Bot linting failed. Please fix the linting errors."
-            exit 1
-          fi
-
-  dashboard-lint:
-    needs: lockfile
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 1
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.6
-
-      - name: Cache bun modules
-        uses: actions/cache@v4
-        with:
-          path: *bun-cache-paths
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Run dashboard linter
-        run: |
-          if bun run --cwd dimp-dashboard lint; then
-            echo "Dashboard linting passed ✔"
-          else
-            echo "::error::❌ Dashboard linting failed. Please fix the linting errors."
-            exit 1
-          fi
-
-  server-lint:
-    needs: lockfile
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 1
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.6
-
-      - name: Cache bun modules
-        uses: actions/cache@v4
-        with:
-          path: *bun-cache-paths
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Run server linter
-        run: |
-          if bun run --cwd dimp-server lint; then
-            echo "Server linting passed ✔"
-          else
-            echo "::error::❌ Server linting failed. Please fix the linting errors."
+            echo "::error::❌ ${{ matrix.title }} linting failed. Please fix the linting errors."
             exit 1
           fi
 
@@ -324,10 +247,7 @@ jobs:
         graphql-schema,
         graphql-codegen,
         drizzle-migrations,
-        auth-lint,
-        bot-lint,
-        dashboard-lint,
-        server-lint,
+        lint,
       ]
     runs-on: ubuntu-latest
     steps:
