@@ -1,6 +1,8 @@
 package.json
 bun.lock
 
+dimp-auth/drizzle/meta
+
 dimp-bot/src/graphql/generated.ts
 
 dimp-server/schema.graphql
