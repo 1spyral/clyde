@@ -11,6 +11,11 @@ const envSchema = z.object({
     LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).catch("info"),
 
     JWKS_FILE: z.string().default("keys/jwks.json"),
+
+    DATABASE_URL: z.string().url(),
+    DB_MAX_CONNECTIONS: z.coerce.number().default(10),
+    DB_IDLE_TIMEOUT: z.coerce.number().default(30),
+    DB_CONNECT_TIMEOUT: z.coerce.number().default(30),
 })
 
 export const env = envSchema.parse(process.env)
