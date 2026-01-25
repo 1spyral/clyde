@@ -27,9 +27,15 @@ jobs:
           - name: dimp-auth
             image: ghcr.io/${{ github.repository_owner }}/dimp-auth
             dockerfile: dimp-auth/Dockerfile
-            target: ""
+            target: auth
             scope: dimp-auth
             push_latest_on_main: true
+          - name: dimp-auth-migrate
+            image: ghcr.io/${{ github.repository_owner }}/dimp-auth-migrate
+            dockerfile: dimp-auth/Dockerfile
+            target: migrate
+            scope: dimp-auth-migrate
+            push_latest_on_main: false
           - name: dimp-bot
             image: ghcr.io/${{ github.repository_owner }}/dimp-bot
             dockerfile: dimp-bot/Dockerfile
