@@ -82,10 +82,11 @@ jobs:
           fi
           tags="${tags}"$'\n'"type=raw,value=latest,enable=${latest_enable}"
 
+          delim="GITHUB_OUTPUT_EOF_$(date +%s)"
           {
-            echo "tags<<'EOF'"
+            echo "tags<<${delim}"
             echo "$tags"
-            echo "EOF"
+            echo "${delim}"
           } >> "$GITHUB_OUTPUT"
         env:
           TAG_NAME: ${{ steps.tag.outputs.tag_name }}
