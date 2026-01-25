@@ -6,7 +6,8 @@
     "dev": "bun run --watch --no-check src/app.ts",
     "start": "bun run --no-check src/app.ts",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "jwks:rotate": "bun run scripts/jwks.ts"
   },
   "engines": {
     "bun": ">=1.0.0"
