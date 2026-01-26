@@ -1,4 +1,5 @@
 import Fastify from "fastify"
+import cookie from "@fastify/cookie"
 import { loggerConfig } from "@/logger"
 import { JwksStore } from "@/jwks"
 import { oauthRoutes } from "@/routes/oauth"
@@ -13,6 +14,7 @@ declare module "fastify" {
 }
 
 fastify.decorate("jwksStore", jwksStore)
+fastify.register(cookie)
 
 fastify.get("/", async (_request, reply) => {
     return reply.code(200).type("text/plain").send("Healthcheck passed")
